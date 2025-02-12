@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class reverseSum{
+public class ReverseSum{
 	public static void main(String args[]){
 		int num,rem;
 		int rev=0,sum=0;
