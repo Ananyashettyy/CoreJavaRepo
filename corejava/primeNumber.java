@@ -1,6 +1,9 @@
-public class primeNumber{
+import java.util.Scanner;
+public class PrimeNumber{
 public static void main(String args[]){
-	int num=29;
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter the number");
+	int num=sc.nextInt();
 	boolean flag=false;
 	if(num==0 || num==1){
 		flag=true;
