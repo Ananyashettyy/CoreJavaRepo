@@ -1,3 +1,4 @@
+import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,22 +14,19 @@ class Student{
         this.rollNo = rollNo;
         this.marks = marks;
     }
-//    public void display()
-//    {
-//        System.out.println("student id:"+id+"\nStudent name:"+name+"\nStudent rollNo:"+rollNo+"\nStudents marks:"+marks);
-//    }
 }
-class StudentDetail{
+class StudentDetails{
    private Student[] students;
     int size = 0;
     int i;
     Scanner sc = new Scanner(System.in);
 
     public void addStudent(Student[] students) {
-        if (size >= students.length) {
-            System.out.println("Array is full");
-            return;
-        }
+        try {
+            if (size >= students.length) {
+                throw new CustomExceptions("Array is full");
+            }
+
         System.out.println("Enter the id of the student: ");
         int id = sc.nextInt();
         System.out.println("Enter the name of the student: ");
@@ -40,6 +38,10 @@ class StudentDetail{
         students[size] = new Student(id, name, rollNo, marks);
         size++;
         System.out.println("Students added");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     public void deleteStudent(Student[] students) {
@@ -78,8 +80,13 @@ class StudentDetail{
         }
     }
 }
-public class MenuDriven {
-    public static void main(String[] args) {
+class CustomExceptions extends  Exception{
+    public CustomExceptions(String message){
+        super(message);
+    }
+}
+public class MenuDriven{
+    public static void main(String[] args) throws CustomExceptions{
         Student[] students = new Student[3];
         Scanner sc = new Scanner(System.in);
         StudentDetail studentDetail= new StudentDetail();
