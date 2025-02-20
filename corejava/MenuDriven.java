@@ -1,5 +1,5 @@
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
+
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 class Student{
@@ -15,7 +15,7 @@ class Student{
         this.marks = marks;
     }
 }
-class StudentDetails{
+class StudentDetail{
    private Student[] students;
     int size = 0;
     int i;
