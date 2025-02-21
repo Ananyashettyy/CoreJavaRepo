@@ -15,7 +15,7 @@ class Student{
     }
 }
 class StudentDetail{
-    static ArrayList<Student> students = new ArrayList<>();
+    ArrayList<Student> students = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
     public void addStudent(){
         System.out.println("Enter the id of the student: ");
@@ -31,12 +31,19 @@ class StudentDetail{
     }
     public void deleteStudent() {
         System.out.println("enter the roll number");
-        int rolldelete = sc.nextInt();
-        boolean removed = students.removeIf(student -> student.rollNo == rolldelete);
-        if (removed) {
-            System.out.println("Student deleted.");
-        } else
-            System.out.println("Student not found.");
+        int rollDelete = sc.nextInt();
+        boolean flag=false;
+        for(int i=0;i<students.size();i++){
+            if(students.get(i).rollNo==rollDelete){
+                students.remove(i);
+                flag=true;
+                System.out.println("student deleted ");
+                break;
+            }
+        }
+        if(!flag){
+            System.out.println("student not found");
+        }
     }
     public void readStudent(){
         if(students.isEmpty()){
