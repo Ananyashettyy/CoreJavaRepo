@@ -1,51 +1,49 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
-class Student{
+class Student {
     int id;
     String name;
     int rollNo;
     int marks;
 
-    Student(int id, String name, int rollNo, int marks){
+    Student(int id, String name, int rollNo, int marks) {
         this.id = id;
         this.name = name;
         this.rollNo = rollNo;
         this.marks = marks;
     }
 }
-class StudentDetail{
-    ArrayList<Student> students = new ArrayList<>();
+class StudentDetail {
+    List<Student> students = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
-    public void addStudent(){
+
+    public void addStudent() {
         System.out.println("Enter the id of the student: ");
         int id = sc.nextInt();
+        sc.nextLine(); // Consume newline
         System.out.println("Enter the name of the student: ");
-        String name = sc.next();
-        System.out.println("Enter the roll number of the number: ");
+        String name = sc.nextLine();
+        System.out.println("Enter the roll number of the student: ");
         int rollNo = sc.nextInt();
         System.out.println("Enter the marks of the student: ");
         int marks = sc.nextInt();
         students.add(new Student(id, name, rollNo, marks));
-        System.out.println("Student added. ");
+        System.out.println("Student added.");
     }
     public void deleteStudent() {
-        System.out.println("enter the roll number");
+        System.out.println("Enter the roll number to delete:");
         int rollDelete = sc.nextInt();
-        boolean flag=false;
-        for(int i=0;i<students.size();i++){
-            if(students.get(i).rollNo==rollDelete){
-                students.remove(i);
-                flag=true;
-                System.out.println("student deleted ");
-                break;
-            }
-        }
-        if(!flag){
-            System.out.println("student not found");
+        List<Student> updatedList=students.stream().filter(student->student.rollNo!=rollDelete).collect(Collectors.toList());
+
+        if (updatedList.size() == students.size()) {
+            System.out.println("Students not deleted");
+        } else {
+            students = updatedList;
+            System.out.println("Student deleted successfully");
         }
     }
-    public void readStudent(){
+    public void readStudent() {
         if(students.isEmpty()){
             System.out.println("Array list is empty");
         }
@@ -61,8 +59,9 @@ public class MenuDriven {
         int option;
         Scanner sc = new Scanner(System.in);
         StudentDetail stud = new StudentDetail();
+
         do {
-            System.out.println("Enter your choice\n 1. Add student\n 2. Read student\n 3. Remove student\n 4. Exit");
+            System.out.println("Enter your choice\n1. Add student\n2. Read students\n3. Remove student\n4. Exit");
             option = sc.nextInt();
 
             switch (option) {
@@ -79,9 +78,8 @@ public class MenuDriven {
                     System.out.println("Exited");
                     return;
                 default:
-                    System.out.println("Invalid.");
+                    System.out.println("Invalid choice.");
             }
-        }while(option != 4);
-
+        } while (option != 4);
     }
 }
