@@ -13,7 +13,7 @@ class Student {
         this.rollNo = rollNo;
         this.marks = marks;
     }
-}
+} //
 class StudentDetail {
     List<Student> students = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
