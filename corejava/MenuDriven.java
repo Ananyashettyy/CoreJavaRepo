@@ -78,6 +78,7 @@ class StudentDetail {
             System.out.println("Enter the roll number to delete:");
             int rollDelete = sc.nextInt();
 
+
             String query = "DELETE FROM student WHERE ROLL_NO = ?;";
             PreparedStatement pst = con.prepareStatement(query);
             pst.setInt(1, rollDelete);
