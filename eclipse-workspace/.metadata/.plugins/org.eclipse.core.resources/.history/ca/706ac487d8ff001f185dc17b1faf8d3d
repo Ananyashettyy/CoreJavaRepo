@@ -1,0 +1,41 @@
+package com.example.servlet;
+
+import dao.StudentDAOImpl;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+import java.io.IOException;
+import java.sql.SQLException;
+
+@WebServlet("/StudentServlet")
+public class StudentServlet extends HttpServlet {
+    private StudentDAOImpl studentDAO;
+
+    public void init() {
+        studentDAO = new StudentDAOImpl();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+
+        try {
+            if ("add".equals(action)) {
+                String name = request.getParameter("name");
+                String rollNo = request.getParameter("rollNo");
+                int marks = Integer.parseInt(request.getParameter("marks"));
+                int deptId = Integer.parseInt(request.getParameter("deptId"));
+
+                studentDAO.addStudent(name, rollNo, marks, deptId);
+                response.sendRedirect("viewStudents.jsp");
+
+            } else if ("delete".equals(action)) {
+                int studentId = Integer.parseInt(request.getParameter("id"));
+                studentDAO.deleteStudent(studentId);
+                response.sendRedirect("viewStudents.jsp");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -1,0 +1,67 @@
+package com.example.dao;
+
+import com.example.db.DBConnection;
+import java.sql.*;
+import java.util.*;
+
+public class StudentDAOImpl implements IStudentDAO {
+
+    @Override
+    public void addStudent(String name, String rollNo, int marks, int deptId) throws SQLException {
+        Connection con = DBConnection.getConnection();
+        String query = "INSERT INTO students (name, roll_no, marks, dept_id) VALUES (?, ?, ?, ?)";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, name);
+        ps.setString(2, rollNo);
+        ps.setInt(3, marks);
+        ps.setInt(4, deptId);
+        ps.executeUpdate();
+        con.close();
+    }
+
+    @Override
+    public List<String> getAllStudents() throws SQLException {
+        Connection con = DBConnection.getConnection();
+        String query = "SELECT s.id, s.name, s.roll_no, s.marks, d.dept_name " +
+                       "FROM students s " +
+                       "JOIN department d ON s.dept_id = d.dept_id";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        List<String> studentList = new ArrayList<>();
+        while (rs.next()) {
+            studentList.add("ID: " + rs.getInt("id") +
+                            ", Name: " + rs.getString("name") +
+                            ", Roll No: " + rs.getString("roll_no") +
+                            ", Marks: " + rs.getInt("marks") +
+                            ", Department: " + rs.getString("dept_name"));
+        }
+        con.close();
+        return studentList;
+    }
+
+    @Override
+    public void deleteStudent(int id) throws SQLException {
+        Connection con = DBConnection.getConnection();
+        String query = "DELETE FROM students WHERE id = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+        con.close();
+    }
+
+    @Override
+    public List<String> getDepartments() throws SQLException {
+        Connection con = DBConnection.getConnection();
+        String query = "SELECT * FROM department";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        List<String> departmentList = new ArrayList<>();
+        while (rs.next()) {
+            departmentList.add(rs.getInt("dept_id") + " - " + rs.getString("dept_name"));
+        }
+        con.close();
+        return departmentList;
+    }
+}

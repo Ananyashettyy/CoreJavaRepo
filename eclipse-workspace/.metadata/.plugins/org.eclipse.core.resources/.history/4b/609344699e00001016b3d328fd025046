@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+/* General Page Styling */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #3A3D98, #6E72FC);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container Styling */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Heading Style */
+h2 {
+    color: #3A3D98;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin: 15px 0 6px;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+}
+
+/* Inputs and Select Dropdowns */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #6E72FC;
+    outline: none;
+    box-shadow: 0 0 5px rgba(110, 114, 252, 0.5);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Primary Button */
+.btn-primary {
+    background: linear-gradient(90deg, #6E72FC, #3A3D98);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #3A3D98, #6E72FC);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background: #ff4b5c;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #d32f2f;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: linear-gradient(90deg, #6E72FC, #3A3D98);
+    color: white;
+}
+
+td {
+    background-color: #f7f7f7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+}

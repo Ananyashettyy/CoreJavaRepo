@@ -1,0 +1,57 @@
+<!DOCTYPE.html>
+<html>
+<head>
+<title>calculator</title>
+<script>
+function calc()
+{
+var num1=parseFloat(document.getElementById("n11").value);
+var num2=parseFloat(document.getElementById("n22").value);
+var su=num1+num2;
+var di=num1-num2;
+var pr=num1*num2;
+var qu=num1/num2;
+document.getElementById("s").value=su;
+document.getElementById("d").value=di;
+document.getElementById("p").value=pr;
+document.getElementById("q").value=qu;
+}
+</script>
+</head>
+<body>
+<center>
+<h1>calculator</h1>
+<form>
+<br>
+<lable for="n11">number 1:</lable>
+<input type="text" id="n11" name="num1">
+</br>
+<br>
+<lable for="n22">number 2:</lable>
+<input type="text" id="n22" name="num2">
+</br>
+<br>
+<button type="button" onclick="calc()">calculate</button>
+<button type="reset" name="reset">reset</button>
+</br>
+<br>
+<label for="sum:">sum:</label>
+<input type="text" id="s" name="sum:" disabled>
+</br>
+<br>
+<label for="difference:">difference:</label>
+<input type="text" id="d" name="difference:" disabled>
+</br>
+<br>
+<label for="product:">product:</label>
+<input type="text" id="p" name="product:" disabled>
+</br>
+<br>
+<label for="quotient:">quotient:</label>
+<input type="text" id="q" name="quotient:" disabled>
+</br>
+</center>
+</body>
+</html>
+
+

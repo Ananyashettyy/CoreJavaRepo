@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class ReverseSum{
-	public static void main(String args[]){
-		int num,rem;
+	public synchronized static void main(String... args){
+		int rem;
 		int rev=0,sum=0;
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter the number");

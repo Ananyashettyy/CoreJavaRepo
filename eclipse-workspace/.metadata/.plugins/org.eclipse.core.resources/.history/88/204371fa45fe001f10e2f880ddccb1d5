@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index page</title>
+</head>
+<body>
+<h1>welcome to the webpage</h1>
+<div class="links">
+<a href="login.jsp">Login</a>
+<a href="register.jsp">Register</a>
+</div>
+</body>
+</html>
